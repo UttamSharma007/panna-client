@@ -48,6 +48,10 @@ const Sidebar = () => {
       setCloseModal(false);
     }
   }, [closeModal]);
+  // console.log("libraryData", libraryData);
+  const handleLinkClick = (data) => {
+    setChatResponse([data]);
+  };
   return (
     <div className="height h-full col-span-2">
       <div>
@@ -161,7 +165,12 @@ const Sidebar = () => {
                 {libraryData.map((item) => {
                   return (
                     <div>
-                      <Link key={item.id} className="cursor-pointer">
+                      <Link
+                        key={item.id}
+                        onClick={() => handleLinkClick(item)}
+                        to="/results"
+                        className="cursor-pointer"
+                      >
                         {item.question}
                       </Link>
                     </div>

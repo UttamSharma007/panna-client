@@ -16,12 +16,12 @@ const Results = () => {
   const [isDisabled, setIsDisabled] = useState(true);
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
+      event.preventDefault();
       handleSearch(ctx, navigate);
     }
   };
 
   const checkHeight = (height) => {
-    console.log("first", height);
     if (height >= 48) {
       setTextHeight(true);
     } else {

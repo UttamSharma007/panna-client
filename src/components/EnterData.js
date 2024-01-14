@@ -29,7 +29,7 @@ export const handleSearch = async (ctx, navigate) => {
         },
       }
     );
-    console.log(response.data.result.choices[0].message.content);
+    // console.log(response.data.result.choices[0].message.content);
     let result = response.data.result.choices[0].message.content;
     if (result) {
       let outputString = result.replace(/\n/g, "<br/>");
@@ -46,7 +46,7 @@ export const handleSearch = async (ctx, navigate) => {
       navigate("/results");
     }
   } catch (error) {
-    console.error("Error fetching data:", error);
+    setLoading(false);
   }
 };
 
