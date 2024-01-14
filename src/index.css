@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.text-16 {
+  --tw-text-16: 16px;
+  font-size: var(--tw-text-16);
+}
+.sbar-w {
+  width: 220px;
+}
+.cw-m {
+  margin: 8px 8px 8px 0;
+}
+.f-white {
+  color: white;
+}
