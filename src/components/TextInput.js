@@ -22,6 +22,7 @@ const TextInput = () => {
       handleSearch(ctx, navigate);
     }
   };
+
   return (
     <div className="border border-pxty-light rounded-md bg-pxty-dark-mid">
       <div className="px-4 pt-4">
@@ -105,14 +106,14 @@ const TextInput = () => {
             <Spinner
               classNames={{
                 circle1: [
-                  "border-l-pxty-light-text",
-                  "border-r-pxty-light-text",
-                  "border-t-pxty-light-text",
+                  "border-l-pxty-light",
+                  "border-r-pxty-light",
+                  "border-t-pxty-light",
                 ],
                 circle2: [
-                  "border-l-pxty-light-text",
-                  "border-r-pxty-light-text",
-                  "border-t-pxty-light-text",
+                  "border-l-pxty-light",
+                  "border-r-pxty-light",
+                  "border-t-pxty-light",
                 ],
               }}
               color="warning"
@@ -124,6 +125,7 @@ const TextInput = () => {
             isIconOnly
             className="bg-pxty-dark-mid text-pxty-light-text p-0 h-fit text-sm h-8 ml-4"
             radius="full"
+            disabled={isDisabled}
             startContent={
               <span>
                 <svg
