@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Layout from "./Layout";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
@@ -52,10 +52,13 @@ export const handleSearch = async (ctx, navigate) => {
 
 const EnterData = () => {
   const ctx = useContext(context);
-  const { openModal } = ctx;
+  const { setActivePage, openModal } = ctx;
+  useEffect(() => {
+    setActivePage("home");
+  }, []);
   return (
     <Layout>
-      <div className="rounded-md cw-m col-span-6 border border-pxty-border-color bg-pxty-chat-bg flex justify-center items-center">
+      <div className="rounded-md cw-m col-span-6 border border-pxty-light bg-pxty-dark flex justify-center items-center">
         <div className="w-7/12">
           <div className="text-pxty-hg text-4xl pb-1 mb-8 text-center">
             Where knowledge begins

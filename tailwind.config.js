@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 const { nextui } = require("@nextui-org/react");
 
 /** @type {import('tailwindcss').Config} */
@@ -10,10 +11,10 @@ export default {
   theme: {
     extend: {},
     colors: {
-      "pxty-grey": "#2A2A27",
-      "pxty-border-color": "rgba(59,59,59,.8)",
-      "pxty-text-color": "rgb(143 143 143)",
-      "pxty-chat-bg": "#20201D",
+      "pxty-dark-mid": "#083831",
+      "pxty-light": "#73AB96", // light green
+      "pxty-mid": "#2C645B", // mid green
+      "pxty-dark": "#082A22", // dark green
       "pxty-hover": "#333331",
       "pxty-hover-cyan": "#20B8CD",
     },
@@ -21,8 +22,11 @@ export default {
       white: "#FFF",
       cardWhite: "#EAEBED",
       black: "#000",
-      "pxty-text-color": "rgb(143 143 143)",
+      "pxty-light-text": "#1fa363",
+      "pxty-mid": "#2C645B",
+      "pxty-dark": "#082A22",
       "pxty-hg": "#E8E8E6",
+      "pxty-hover-cyan": "#20B8CD",
     },
   },
   darkMode: "class",

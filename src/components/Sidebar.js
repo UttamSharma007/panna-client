@@ -1,20 +1,16 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Image } from "@nextui-org/image";
 import {
-  Input,
   Button,
   Modal,
   ModalContent,
-  ModalHeader,
   ModalBody,
-  ModalFooter,
-  Textarea,
   useDisclosure,
 } from "@nextui-org/react";
 import React, { useContext, useEffect, useState } from "react";
-import Logo from "../images/logo.jpeg";
+import Logo from "../images/logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import { context } from "../App";
-import { handleSearch } from "./EnterData";
 import TextInput from "./TextInput";
 
 const Sidebar = () => {
@@ -22,10 +18,10 @@ const Sidebar = () => {
   const {
     libraryData,
     setChatResponse,
-    openModal,
     setOpenModal,
     closeModal,
     setCloseModal,
+    activePage,
   } = ctx;
   const [toggleLib, setToggleLib] = useState(true);
   const navigate = useNavigate();
@@ -48,15 +44,20 @@ const Sidebar = () => {
       setCloseModal(false);
     }
   }, [closeModal]);
-  // console.log("libraryData", libraryData);
+
   const handleLinkClick = (data) => {
     setChatResponse([data]);
   };
   return (
-    <div className="height h-full col-span-2">
-      <div>
-        <div className="flex items-center gap-x-1  p-4">
-          <Image src={Logo} width="40px" height="40px" />
+    <div className="height h-full col-span-2 grid">
+      <div className="sticky self-start top-0">
+        <div className="flex items-center gap-x-1  p-4 ">
+          <Image
+            src={Logo}
+            width="40px"
+            height="40px"
+            className="rounded-full border border-1 border-[#000]"
+          />
           <span className="font-bold text-white text-xl ml-2">
             Paññā (Knowledge)
           </span>
@@ -65,7 +66,7 @@ const Sidebar = () => {
           <Button
             onPress={onOpen}
             onClick={() => setChatResponse([])}
-            className="bg-pxty-chat-bg rounded-full border border-3 w-full border-pxty-border-color flex justify-start text-pxty-text-color hover:border-pxty-hover-cyan"
+            className="bg-pxty-dark rounded-full border border-3 w-full border-pxty-light flex justify-start text-pxty-light-text hover:border-pxty-hover-cyan"
           >
             New Thread
           </Button>
@@ -73,7 +74,7 @@ const Sidebar = () => {
             backdrop="blur"
             size="3xl"
             hideCloseButton
-            className="bg-pxty-grey"
+            className="bg-pxty-dark-mid"
             isOpen={isOpen}
             onOpenChange={onOpenChange}
           >
@@ -91,7 +92,11 @@ const Sidebar = () => {
         <div className="px-1">
           <Button
             onClick={() => navigateHome("home")}
-            className="width w-full bg-pxty-grey text-pxty-text-color text-base justify-start hover:bg-white"
+            className={`width w-full bg-pxty-dark-mid  ${
+              activePage === "home"
+                ? "text-pxty-hover-cyan"
+                : "text-pxty-light-text"
+            } text-base justify-start hover:text-pxty-hover-cyan`}
             startContent={
               <span>
                 <svg
@@ -113,7 +118,11 @@ const Sidebar = () => {
           </Button>
           <Button
             onClick={() => navigateHome("discover")}
-            className="width w-full bg-pxty-grey text-pxty-text-color text-base justify-start hover:bg-white"
+            className={`width w-full bg-pxty-dark-mid  ${
+              activePage === "discover"
+                ? "text-pxty-hover-cyan"
+                : "text-pxty-light-text"
+            } text-base justify-start hover:text-pxty-hover-cyan`}
             startContent={
               <span>
                 <svg
@@ -138,7 +147,11 @@ const Sidebar = () => {
           <div className="relative">
             <Button
               onClick={() => setToggleLib((prev) => !prev)}
-              className="width w-full bg-pxty-grey text-pxty-text-color text-base justify-start hover:bg-white"
+              className={`width w-full bg-pxty-dark-mid  ${
+                activePage === "library"
+                  ? "text-pxty-hover-cyan"
+                  : "text-pxty-light-text"
+              } text-base justify-start hover:text-pxty-hover-cyan`}
               startContent={
                 <span>
                   <svg
@@ -161,10 +174,10 @@ const Sidebar = () => {
               Library
             </Button>
             {toggleLib && (
-              <div className="text-xs absolute left-[15%] top-[100%] border border-pxty-border-color border-y-0 border-r-0 pl-[10px] leading-7">
+              <div className="text-xs absolute left-[15%] top-[100%] border border-pxty-light border-y-0 border-r-0 pl-[10px] leading-7 ">
                 {libraryData.map((item) => {
                   return (
-                    <div>
+                    <div className="hover:text-pxty-hover-cyan">
                       <Link
                         key={item.id}
                         onClick={() => handleLinkClick(item)}

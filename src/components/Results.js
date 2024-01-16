@@ -10,8 +10,14 @@ import { handleSearch } from "./EnterData";
 const Results = () => {
   const navigate = useNavigate();
   const ctx = useContext(context);
-  const { chatResponse, enteredPrompt, setEnteredPrompt, loading, openModal } =
-    ctx;
+  const {
+    chatResponse,
+    enteredPrompt,
+    setEnteredPrompt,
+    loading,
+    openModal,
+    setActivePage,
+  } = ctx;
   const [textHeight, setTextHeight] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
   const handleKeyPress = (event) => {
@@ -29,6 +35,9 @@ const Results = () => {
     }
   };
   useEffect(() => {
+    setActivePage("library");
+  }, []);
+  useEffect(() => {
     if (chatResponse.length > 0) {
       let resp = chatResponse[chatResponse.length - 1];
       const div = document.getElementById(resp.id);
@@ -44,7 +53,7 @@ const Results = () => {
   }, [enteredPrompt]);
   return (
     <Layout>
-      <div className="rounded-md cw-m col-span-6 border border-pxty-border-color bg-pxty-chat-bg grid grid-cols-10">
+      <div className="rounded-md cw-m col-span-6 border border-pxty-light bg-pxty-dark grid grid-cols-10">
         <div className="col-span-1"> </div>
         {/* ------- main content */}
         <div className="col-span-8 relative">
@@ -78,12 +87,12 @@ const Results = () => {
                 </div>
                 {!openModal && (
                   <div
-                    className={`bg-pxty-grey fixed bottom-[5%] ${
+                    className={`bg-pxty-dark-mid fixed bottom-[5%] ${
                       textHeight ? "rounded-md" : "rounded-full"
                     } w-[50%] p-2`}
                   >
                     <div
-                      className={`flex items-center justify-between w-full border border-pxty-border-color ${
+                      className={`flex items-center justify-between w-full border border-pxty-light ${
                         textHeight ? "rounded-md" : "rounded-full"
                       }`}
                     >
@@ -117,32 +126,32 @@ const Results = () => {
                         placeholder="Ask anything..."
                         classNames={{
                           inputWrapper: [
-                            "hover:bg-pxty-grey",
+                            "hover:bg-pxty-dark-mid",
                             "p-0",
-                            "bg-pxty-grey",
+                            "bg-pxty-dark-mid",
                           ],
                           input: [
-                            "placeholder:text-pxty-text-color",
+                            "placeholder:text-pxty-light-text",
                             "text-white",
-                            "hover:bg-pxty-grey",
+                            "hover:bg-pxty-dark-mid",
                             "text-base",
                             "pt-2",
-                            "bg-pxty-grey",
+                            "bg-pxty-dark-mid",
                           ],
                           innerWrapper: [
-                            "placeholder:text-pxty-text-color",
+                            "placeholder:text-pxty-light-text",
                             "rounded-md",
-                            "hover:bg-pxty-grey",
+                            "hover:bg-pxty-dark-mid",
                             "text-white",
                             "text-base",
-                            "bg-pxty-grey",
+                            "bg-pxty-dark-mid",
                             "height",
-                            "min-h-[40px]",
+                            "min-h-[45px]",
                           ],
                           base: [
                             "m-[1%]",
-                            "hover:bg-pxty-grey",
-                            "bg-pxty-grey",
+                            "hover:bg-pxty-dark-mid",
+                            "bg-pxty-dark-mid",
                           ],
                         }}
                       />
@@ -162,7 +171,7 @@ const Results = () => {
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 24 24"
-                            fill={isDisabled ? "#333332" : "#229EAE"}
+                            fill={isDisabled ? "#333332" : "#1fa363"}
                             className="w-10 h-10"
                           >
                             <path

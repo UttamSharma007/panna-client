@@ -23,7 +23,7 @@ const TextInput = () => {
     }
   };
   return (
-    <div className="border border-pxty-border-color rounded-md bg-pxty-grey">
+    <div className="border border-pxty-light rounded-md bg-pxty-dark-mid">
       <div className="px-4 pt-4">
         <Textarea
           value={enteredPrompt}
@@ -32,18 +32,18 @@ const TextInput = () => {
           placeholder="Ask anything..."
           classNames={{
             inputWrapper: [
-              // "bg-pxty-grey",
-              "hover:bg-pxty-grey",
-              "focus:bg-pxty-grey",
+              // "bg-pxty-dark-mid",
+              "hover:bg-pxty-dark-mid",
+              "focus:bg-pxty-dark-mid",
               "rounded-md",
               "p-0",
             ],
-            innerWrapper: ["bg-pxty-grey", "height", "min-h-[75px]"],
+            innerWrapper: ["bg-pxty-dark-mid", "height", "min-h-[75px]"],
             input: [
-              "bg-pxty-grey",
-              "hover:bg-pxty-grey",
-              "focus:bg-pxty-grey",
-              "placeholder:text-pxty-text-color",
+              "bg-pxty-dark-mid",
+              "hover:bg-pxty-dark-mid",
+              "focus:bg-pxty-dark-mid",
+              "placeholder:text-pxty-light-text",
               "rounded-md",
               "text-white",
               "text-base",
@@ -54,7 +54,7 @@ const TextInput = () => {
       <div className="flex justify-between">
         <div className="pb-2 pl-2">
           <Button
-            className="bg-pxty-grey text-pxty-text-color p-0 h-fit text-sm h-8"
+            className="bg-pxty-dark-mid text-pxty-light-text p-0 h-fit text-sm h-8 hover:text-pxty-hover-cyan"
             radius="full"
             startContent={
               <span>
@@ -76,7 +76,7 @@ const TextInput = () => {
             Focus
           </Button>
           <Button
-            className="bg-pxty-grey text-pxty-text-color p-0 h-fit text-sm h-8"
+            className="bg-pxty-dark-mid text-pxty-light-text p-0 h-fit text-sm h-8 hover:text-pxty-hover-cyan"
             radius="full"
             startContent={
               <span>
@@ -105,14 +105,14 @@ const TextInput = () => {
             <Spinner
               classNames={{
                 circle1: [
-                  "border-l-pxty-text-color",
-                  "border-r-pxty-text-color",
-                  "border-t-pxty-text-color",
+                  "border-l-pxty-light-text",
+                  "border-r-pxty-light-text",
+                  "border-t-pxty-light-text",
                 ],
                 circle2: [
-                  "border-l-pxty-text-color",
-                  "border-r-pxty-text-color",
-                  "border-t-pxty-text-color",
+                  "border-l-pxty-light-text",
+                  "border-r-pxty-light-text",
+                  "border-t-pxty-light-text",
                 ],
               }}
               color="warning"
@@ -122,16 +122,16 @@ const TextInput = () => {
           <Button
             onClick={() => handleSearch(ctx, navigate)}
             isIconOnly
-            className="bg-pxty-grey text-pxty-text-color p-0 h-fit text-sm h-8 ml-4"
+            className="bg-pxty-dark-mid text-pxty-light-text p-0 h-fit text-sm h-8 ml-4"
             radius="full"
             startContent={
               <span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  fill={isDisabled ? "none" : "#229EAE"}
+                  fill={isDisabled ? "none" : "#1fa363"}
                   viewBox="0 0 24 24"
                   strokeWidth={1}
-                  stroke={isDisabled ? "currentColor" : "#224348"}
+                  stroke={isDisabled ? "grey" : "#224348"}
                   className="w-10 h-10"
                 >
                   <path

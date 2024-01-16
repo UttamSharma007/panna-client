@@ -3,7 +3,7 @@ import Sidebar from "./Sidebar";
 
 const Layout = ({ children }) => {
   return (
-    <div className="grid grid-cols-8 height h-full overflow-auto">
+    <div className="grid grid-cols-8 height h-full overflow-auto bg-pxty-dark-mid">
       <Sidebar />
       {children}
     </div>
