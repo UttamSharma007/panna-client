@@ -6,22 +6,34 @@ import {
   ModalContent,
   ModalBody,
   useDisclosure,
+  Chip,
+  Avatar,
+  Select,
+  SelectItem,
+  Divider,
 } from "@nextui-org/react";
 import React, { useContext, useEffect, useState } from "react";
 import Logo from "../images/logo.png";
 import { Link, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { context } from "../App";
 import TextInput from "./TextInput";
+import logoutImg from "../images/logout.png";
+import { googleLogout } from "@react-oauth/google";
 
 const Sidebar = () => {
   const ctx = useContext(context);
+  const { t } = useTranslation();
   const {
     libraryData,
+    language,
+    setLanguage,
     setChatResponse,
     setOpenModal,
     closeModal,
     setCloseModal,
     activePage,
+    signerData,
   } = ctx;
   const [toggleLib, setToggleLib] = useState(true);
   const navigate = useNavigate();
@@ -48,6 +60,20 @@ const Sidebar = () => {
   const handleLinkClick = (data) => {
     setChatResponse([data]);
   };
+  const languages = [
+    { value: "English", code: "ENG" },
+    { value: "Spanish", code: "ESP" },
+  ];
+  const getInitials = (name) => {
+    const words = name.split(" ");
+    const initials = words.map((word) => word.charAt(0)).join("");
+    return initials;
+  };
+  console.log("signerData", signerData);
+  const handleLogout = () => {
+    googleLogout();
+    console.log("first", googleLogout());
+  };
   return (
     <div className="height h-full col-span-2 grid">
       <div className="sticky self-start top-0">
@@ -62,13 +88,39 @@ const Sidebar = () => {
             Paññā (Knowledge)
           </span>
         </div>
+        <div className="my-4 text-white px-4 pb-4">
+          <div className="flex justify-end w-full">
+            <Select
+              aria-label="Language"
+              defaultSelectedKeys={["ENG"]}
+              className="max-w-xs"
+              size={"sm"}
+              classNames={{
+                base: ["width", "w-full"],
+                trigger: [
+                  "bg-pxty-mid",
+                  "text-white",
+                  "hover:bg-pxty-mid",
+                  "hover:text-[#000]",
+                ],
+              }}
+              onChange={(e) => setLanguage(e.target.value)}
+            >
+              {languages.map((language) => (
+                <SelectItem key={language.code} value={language.code}>
+                  {language.value}
+                </SelectItem>
+              ))}
+            </Select>
+          </div>
+        </div>
         <div className="my-4 text-white px-4">
           <Button
             onPress={onOpen}
             onClick={() => setChatResponse([])}
             className="bg-pxty-dark rounded-full border border-3 w-full border-pxty-light flex justify-start text-pxty-light-text hover:border-pxty-hover-cyan"
           >
-            New Thread
+            {t("New Thread")}
           </Button>
           <Modal
             backdrop="blur"
@@ -114,7 +166,7 @@ const Sidebar = () => {
               </span>
             }
           >
-            Home
+            {t("Home")}
           </Button>
           <Button
             onClick={() => navigateHome("discover")}
@@ -142,7 +194,7 @@ const Sidebar = () => {
               </span>
             }
           >
-            Discover
+            {t("Discover")}
           </Button>
           <div className="relative">
             <Button
@@ -171,7 +223,7 @@ const Sidebar = () => {
                 </span>
               }
             >
-              Library
+              {t("Library")}
             </Button>
             {toggleLib && (
               <div className="text-xs absolute left-[15%] top-[100%] border border-pxty-light border-y-0 border-r-0 pl-[10px] leading-7 ">
@@ -193,6 +245,36 @@ const Sidebar = () => {
             )}
           </div>
         </div>
+      </div>
+      <div className="flex items-end pb-[10px] flex-col-reverse">
+        <div className="w-full grid grid-cols-12 h-[50px] rounded-full p-1">
+          <div className="grid col-span-2  flex justify-center items-center">
+            <span className="rounded-full h-[30px] w-[30px] flex justify-center items-center bg-[#0066DB] text-white">
+              {getInitials(signerData?.name)}
+            </span>
+          </div>
+          <div className="grid col-span-8 flex justify-center items-center text-white ">
+            {signerData?.name}
+          </div>
+          <div className="grid col-span-2 flex justify-center items-center">
+            <span className="border rounded-full h-[30px] w-[30px] flex justify-center items-center">
+              <Button
+                isIconOnly
+                className="rounded-full min-w-[10px] w-[30px] h-[30px]"
+                // color="primary"
+                onClick={handleLogout}
+              >
+                <Image
+                  src={logoutImg}
+                  width="30x"
+                  height="30px"
+                  className="rounded-full border border-1 border-[#000]"
+                />
+              </Button>
+            </span>
+          </div>
+        </div>
+        <Divider className="bg-[#73AB96]" />
       </div>
     </div>
   );

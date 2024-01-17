@@ -3,6 +3,7 @@ import Layout from "./Layout";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import TextInput from "./TextInput";
+import { useTranslation } from "react-i18next";
 import { context } from "../App";
 
 export const handleSearch = async (ctx, navigate) => {
@@ -19,9 +20,10 @@ export const handleSearch = async (ctx, navigate) => {
   try {
     setLoading(true);
     const response = await axios.post(
-      "http://54.237.112.113:5000/handle_user_prompt",
+      "https://54.237.112.113:5000/handle_user_prompt",
       {
         prompt: enteredPrompt,
+        verify: false,
       },
       {
         headers: {
@@ -52,6 +54,7 @@ export const handleSearch = async (ctx, navigate) => {
 
 const EnterData = () => {
   const ctx = useContext(context);
+  const { t } = useTranslation();
   const { setActivePage, openModal } = ctx;
   useEffect(() => {
     setActivePage("home");
@@ -61,7 +64,7 @@ const EnterData = () => {
       <div className="rounded-md cw-m col-span-6 border border-pxty-light bg-pxty-dark flex justify-center items-center">
         <div className="w-7/12">
           <div className="text-pxty-hg text-4xl pb-1 mb-8 text-center">
-            Where knowledge begins
+            {t("Where knowledge begins")}
           </div>
           {!openModal && <TextInput />}
         </div>

@@ -12,7 +12,7 @@ export default {
     extend: {},
     colors: {
       "pxty-dark-mid": "#083831",
-      "pxty-light": "#73AB96", // light green
+      "pxty-light": "#1d503d", // light green
       "pxty-mid": "#2C645B", // mid green
       "pxty-dark": "#082A22", // dark green
       "pxty-hover": "#333331",

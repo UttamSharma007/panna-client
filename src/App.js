@@ -4,19 +4,27 @@ import EnterData from "./components/EnterData";
 import Results from "./components/Results";
 import LoginPage from "./components/LoginPage";
 import Discover from "./components/Discover";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+import { withTranslation } from "react-i18next";
+import i18n from "./i18n";
 import GoogleLoginPage from "./components/GoogleLoginPage";
 
 export const context = createContext();
 function App() {
   const [activePage, setActivePage] = useState("home");
+  const [language, setLanguage] = useState("ENG");
   const [chatResponse, setChatResponse] = useState([]);
   const [enteredPrompt, setEnteredPrompt] = useState("");
   const [libraryData, setLibraryData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [closeModal, setCloseModal] = useState(false);
+  const [signerData, setSignerData] = useState({});
+  useEffect(() => {
+    i18n.changeLanguage(language);
+  }, [language]);
+
   return (
     <div className="bg-pxty-dark-mid h-screen text-pxty-light-text">
       <GoogleOAuthProvider clientId="412833534919-5etl75bd9mmfnelsibi9efvpdk5ejmkl.apps.googleusercontent.com">
@@ -24,6 +32,8 @@ function App() {
           value={{
             activePage,
             setActivePage,
+            language,
+            setLanguage,
             chatResponse,
             setChatResponse,
             enteredPrompt,
@@ -36,6 +46,8 @@ function App() {
             setOpenModal,
             closeModal,
             setCloseModal,
+            signerData,
+            setSignerData,
           }}
         >
           <Router>
@@ -53,4 +65,4 @@ function App() {
   );
 }
 
-export default App;
+export default withTranslation()(App);
