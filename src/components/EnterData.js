@@ -6,6 +6,23 @@ import TextInput from "./TextInput";
 import { useTranslation } from "react-i18next";
 import { context } from "../App";
 
+// if (process.env.NODE_ENV === "development") {
+//   axios.defaults.httpsAgent = new https.Agent({ rejectUnauthorized: false });
+// }
+
+// const agent = new https.Agent({
+//   rejectUnauthorized: false,
+//   requestCert: false,
+//   agent: false,
+// });
+
+// const axiosInstance = axios.create({
+//   baseURL: process.env.REACT_APP_API_URL,
+//   responseType: 'json',
+//   withCredentials: true,
+//   httpsAgent: agent
+// });
+
 export const handleSearch = async (ctx, navigate) => {
   const {
     chatResponse,
@@ -19,11 +36,11 @@ export const handleSearch = async (ctx, navigate) => {
   } = ctx;
   try {
     setLoading(true);
+    // navigate("/results");
     const response = await axios.post(
-      "https://54.237.112.113:5000/handle_user_prompt",
+      "http://3.19.203.187:5001/handle_user_prompt",
       {
         prompt: enteredPrompt,
-        verify: false,
       },
       {
         headers: {
@@ -48,6 +65,7 @@ export const handleSearch = async (ctx, navigate) => {
       navigate("/results");
     }
   } catch (error) {
+    console.log(error.response);
     setLoading(false);
   }
 };

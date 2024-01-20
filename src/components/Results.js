@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Textarea, Button, Spinner } from "@nextui-org/react";
+import { Textarea, Button, Spinner, Skeleton } from "@nextui-org/react";
 import Layout from "./Layout";
 import { context } from "../App";
 import Markdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import { useNavigate } from "react-router-dom";
 import { handleSearch } from "./EnterData";
+import { skeletonStyle } from "./TextInput";
 
 const Results = () => {
   const navigate = useNavigate();
@@ -51,6 +52,7 @@ const Results = () => {
       setIsDisabled(true);
     }
   }, [enteredPrompt]);
+  console.log("---->", loading);
   return (
     <Layout>
       <div className="rounded-md cw-m col-span-6 border border-pxty-light bg-pxty-dark grid grid-cols-10">

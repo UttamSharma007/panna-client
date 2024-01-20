@@ -17,6 +17,7 @@ export default {
       "pxty-dark": "#082A22", // dark green
       "pxty-hover": "#333331",
       "pxty-hover-cyan": "#20B8CD",
+      // ...theme.colors,
     },
     textColor: {
       white: "#FFF",

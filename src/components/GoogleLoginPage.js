@@ -1,5 +1,5 @@
 import React from "react";
-import { GoogleLogin } from "@react-oauth/google";
+// import { GoogleLogin } from "@react-oauth/google";
 
 const GoogleLoginPage = () => {
   const responseMessage = (response) => {
@@ -10,7 +10,7 @@ const GoogleLoginPage = () => {
   };
   return (
     <div>
-      <GoogleLogin onSuccess={responseMessage} onError={errorMessage} />
+      {/* <GoogleLogin onSuccess={responseMessage} onError={errorMessage} /> */}
     </div>
   );
 };
