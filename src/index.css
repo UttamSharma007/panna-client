@@ -15,3 +15,12 @@
 .f-white {
   color: white;
 }
+#skeleton-loader:before {
+  background-image: linear-gradient(
+    to right,
+    #2c6a60 0%,
+    #225e547a 50%,
+    #225d5369 100%
+  );
+  border: none;
+}

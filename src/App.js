@@ -12,7 +12,7 @@ import GoogleLoginPage from "./components/GoogleLoginPage";
 export const context = createContext();
 function App() {
   const [activePage, setActivePage] = useState("home");
-  const [language, setLanguage] = useState("ENG");
+  const [language, setLanguage] = useState("en-US");
   const [chatResponse, setChatResponse] = useState([]);
   const [enteredPrompt, setEnteredPrompt] = useState("");
   const [libraryData, setLibraryData] = useState([]);

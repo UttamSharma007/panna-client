@@ -94,8 +94,8 @@ const Sidebar = () => {
             <div className="flex justify-end w-full">
               <Select
                 aria-label="Language"
-                defaultSelectedKeys={["en-US"]}
-                className="max-w-xs"
+                defaultSelectedKeys={[language]}
+                // className="max-w-xs"
                 size={"sm"}
                 classNames={{
                   base: ["width", "w-full"],

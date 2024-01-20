@@ -11,7 +11,8 @@ import { useTranslation } from "react-i18next";
 export const skeletonStyle = (loading) =>
   `rounded-lg bg-pxty-${
     loading ? "mid" : "dark-mid"
-  } before:content-[''] before:bg-gradient-to-r from-pxty-mid via-pxty-dark to-pxty-light m-1`;
+  } before:content-[''] before:bg-gradient-to-r from-pxty-mid via-pxty-dark to-pxty-light m-1 before:rounded-lg`;
+// linear-gradient(to right, #0c3f38 0%,#083831 50%, #235d551f 100%)
 const TextInput = () => {
   const ctx = useContext(context);
   const { t } = useTranslation();
@@ -62,7 +63,11 @@ const TextInput = () => {
 
   return (
     <div className="border border-pxty-light rounded-md bg-pxty-dark-mid">
-      <Skeleton isLoaded={!loading} className={skeletonStyle(loading)}>
+      <Skeleton
+        isLoaded={!loading}
+        className={skeletonStyle(loading)}
+        id="skeleton-loader"
+      >
         <div className="px-4 pt-4">
           <Textarea
             value={enteredPrompt}
@@ -92,7 +97,11 @@ const TextInput = () => {
         </div>
       </Skeleton>
       <div className="flex justify-between">
-        <Skeleton isLoaded={!loading} className={skeletonStyle(loading)}>
+        <Skeleton
+          isLoaded={!loading}
+          className={skeletonStyle(loading)}
+          id="skeleton-loader"
+        >
           <div className="pb-2 pl-2">
             <Button
               className="bg-pxty-dark-mid text-pxty-light-text p-0 h-fit text-sm h-8 hover:text-pxty-hover-cyan"

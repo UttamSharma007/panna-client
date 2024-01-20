@@ -36,11 +36,12 @@ export const handleSearch = async (ctx, navigate) => {
   } = ctx;
   try {
     setLoading(true);
-    // navigate("/results");
+    navigate("/results");
     const response = await axios.post(
       "http://3.19.203.187:5001/handle_user_prompt",
       {
         prompt: enteredPrompt,
+        rejectUnauthorized: false,
       },
       {
         headers: {
@@ -62,7 +63,7 @@ export const handleSearch = async (ctx, navigate) => {
       setEnteredPrompt("");
       setLoading(false);
       setCloseModal(true);
-      navigate("/results");
+      // navigate("/results");
     }
   } catch (error) {
     console.log(error.response);
