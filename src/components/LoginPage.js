@@ -79,9 +79,9 @@ export default function LoginPage() {
   //   }
   // }, [user]);
   return (
-    <div className="w-screen p-8 flex items-center justify-center bg-pxty-dark-mid height h-fit">
+    <div className="w-screen p-5 sm:p-8 flex items-center justify-center bg-pxty-dark-mid height h-fit">
       <Card
-        className="pt-[60px] pb-[60px] pl-[40px] pr-[40px] bg-gradient-to-r from-[#082A22] via-[#082A22] to-[#07231c] max-w-[600px] rounded-[30px] mt-[7%]"
+        className="pt-[60px] pb-[60px] pl-[20px] sm:pl-[40px] pr-[20px] sm:pr-[40px] bg-gradient-to-r from-[#082A22] via-[#082A22] to-[#07231c] max-w-[600px] rounded-[30px] mt-[7%]"
         style={{ boxShadow: "5px 5px 11px rgba(0, 0, 0, 0.5)" }}
       >
         <div className="flex justify-end w-full">
@@ -90,7 +90,7 @@ export default function LoginPage() {
             defaultSelectedKeys={[language]}
             className="max-w-xs"
             classNames={{
-              base: ["width", "w-1/4"],
+              base: ["width", "w-2/4", "sm:1/4"],
               trigger: [
                 "bg-pxty-mid",
                 "text-white",
@@ -116,15 +116,15 @@ export default function LoginPage() {
               height="100px"
               className="rounded-full border border-1 border-[#000]"
             />
-            <span className="font-bold text-white text-4xl ml-2">
+            <span className="font-bold text-white text-2xl sm:text-3xl md:text-4xl ml-2">
               {t("Paññā (Knowledge)")}
             </span>
           </div>
           <Divider className="bg-pxty-light" />
-          <section className="text-white text-4xl my-4">
+          <section className="text-white text-2xl sm:text-3xl md:text-4xl my-4">
             {t("Bridging Connections and Empowering Autistic Journeys")}
           </section>
-          <section className="text-white text-xl">
+          <section className="text-white text-sm sm:text-lg md:text-xl">
             <span className="text-white ">Paññā</span>
             {` `}
             {t(

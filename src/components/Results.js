@@ -61,7 +61,7 @@ const Results = () => {
   }, [loading]);
   return (
     <Layout>
-      <div className="rounded-md cw-m col-span-6 border border-pxty-light bg-pxty-dark grid grid-cols-10">
+      <div className="rounded-md cw-m col-span-11 sm:col-span-9 lg:col-span-10 border border-pxty-light bg-pxty-dark grid grid-cols-10">
         <div className="col-span-1"> </div>
         {/* ------- main content */}
         <div className="col-span-8 relative">
@@ -98,7 +98,7 @@ const Results = () => {
                   <div
                     className={`bg-pxty-dark-mid fixed bottom-[5%] z-50 ${
                       textHeight ? "rounded-md" : "rounded-full"
-                    } w-[50%] p-2`}
+                    } w-[70%] sm:w-[50%] p-2`}
                   >
                     <div
                       className={`flex items-center justify-between w-full border border-pxty-light ${

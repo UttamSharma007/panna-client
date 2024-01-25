@@ -35,13 +35,20 @@ const Sidebar = () => {
     setCloseModal,
     activePage,
     signerData,
+    setEnteredPrompt,
   } = ctx;
   const [toggleLib, setToggleLib] = useState(true);
+  const [toggleSidebar, setToggleSidebar] = useState("close");
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose, onOpenChange } = useDisclosure();
 
+  const toggleMenu = (data) => {
+    setToggleSidebar(data);
+  };
+  console.log("side", toggleSidebar);
   const navigateHome = (route) => {
     setChatResponse([]);
+    setEnteredPrompt("");
     navigate(`/${route}`);
   };
   useEffect(() => {
@@ -75,18 +82,106 @@ const Sidebar = () => {
     // googleLogout();
     // console.log("first", googleLogout());
   };
+  const menuSvg = () => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      x="0px"
+      y="0px"
+      width="25px"
+      height="30px"
+      viewBox="0,0,256,256"
+    >
+      <g
+        fill="#1fa363"
+        fill-rule="nonzero"
+        stroke="none"
+        stroke-width="1"
+        stroke-linecap="butt"
+        stroke-linejoin="miter"
+        stroke-miterlimit="10"
+        stroke-dasharray=""
+        stroke-dashoffset="0"
+        font-family="none"
+        font-weight="none"
+        font-size="none"
+        text-anchor="none"
+        style={{ mixBlendMode: "normal" }}
+      >
+        <g transform="scale(10.66667,10.66667)">
+          <path d="M5,7h2h12c1.1,0 2,-0.9 2,-2c0,-1.1 -0.9,-2 -2,-2h-12h-2c-1.1,0 -2,0.9 -2,2c0,1.1 0.9,2 2,2z"></path>
+          <path d="M19,10h-3h-11c-1.1,0 -2,0.9 -2,2c0,1.1 0.9,2 2,2h11h3c1.1,0 2,-0.9 2,-2c0,-1.1 -0.9,-2 -2,-2z"></path>
+          <path d="M19,17h-6h-8c-1.1,0 -2,0.9 -2,2c0,1.1 0.9,2 2,2h8h6c1.1,0 2,-0.9 2,-2c0,-1.1 -0.9,-2 -2,-2z"></path>
+        </g>
+      </g>
+    </svg>
+  );
+  const closeSvg = () => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      x="0px"
+      y="0px"
+      width="20px"
+      height="20px"
+      viewBox="0,0,256,256"
+    >
+      <g
+        fill="#1fa363"
+        fill-rule="nonzero"
+        stroke="none"
+        stroke-width="1"
+        stroke-linecap="butt"
+        stroke-linejoin="miter"
+        stroke-miterlimit="10"
+        stroke-dasharray=""
+        stroke-dashoffset="0"
+        font-family="none"
+        font-weight="none"
+        font-size="none"
+        text-anchor="none"
+        style={{ mixBlendMode: "normal" }}
+      >
+        <g transform="scale(8.53333,8.53333)">
+          <path d="M7,4c-0.25587,0 -0.51203,0.09747 -0.70703,0.29297l-2,2c-0.391,0.391 -0.391,1.02406 0,1.41406l7.29297,7.29297l-7.29297,7.29297c-0.391,0.391 -0.391,1.02406 0,1.41406l2,2c0.391,0.391 1.02406,0.391 1.41406,0l7.29297,-7.29297l7.29297,7.29297c0.39,0.391 1.02406,0.391 1.41406,0l2,-2c0.391,-0.391 0.391,-1.02406 0,-1.41406l-7.29297,-7.29297l7.29297,-7.29297c0.391,-0.39 0.391,-1.02406 0,-1.41406l-2,-2c-0.391,-0.391 -1.02406,-0.391 -1.41406,0l-7.29297,7.29297l-7.29297,-7.29297c-0.1955,-0.1955 -0.45116,-0.29297 -0.70703,-0.29297z"></path>
+        </g>
+      </g>
+    </svg>
+  );
   return (
-    <div className="height h-full col-span-2 grid">
-      <div className="sticky self-start top-0 h-screen flex flex-col justify-between pb-5">
-        <div>
-          <div className="flex items-center gap-x-1  p-4 ">
+    <div className="height h-full col-span-1 sm:col-span-3 lg:col-span-2 grid">
+      <div
+        className={`grid sm:hidden cursor-pointer relative ${
+          toggleSidebar === "open" ? "hidden" : "block"
+        }`}
+      >
+        <span
+          onClick={() => toggleMenu("open")}
+          className="sticky self-start top-[10px] pl-1"
+        >
+          {toggleSidebar === "close" && menuSvg()}
+        </span>
+      </div>
+      <div
+        className={`sticky self-start top-0 h-screen flex flex-col justify-between pb-5 z-[100] ${
+          toggleSidebar === "open"
+            ? "block bg-pxty-dark-mid shadow shadow-2xl"
+            : "hidden"
+        } sm:flex sm:shadow-none`}
+      >
+        <div className="relative">
+          <div
+            onClick={() => toggleMenu("close")}
+            className="pt-0 sm:hidden cursor-pointer absolute right-[10px] top-[10px]"
+          >
+            {toggleSidebar === "open" && closeSvg()}
+          </div>
+          <div className="flex items-center gap-x-1 p-4 ">
             <Image
               src={Logo}
               width="40px"
               height="40px"
               className="rounded-full border border-1 border-[#000]"
             />
-            <span className="font-bold text-white text-xl ml-2">
+            <span className="font-bold text-white text-[12px] sm:text-[] md:text-[16px] ml-2">
               {t("Paññā (Knowledge)")}
             </span>
           </div>
@@ -250,13 +345,13 @@ const Sidebar = () => {
         </div>
         <div>
           <Divider className="bg-[#73AB96]" />
-          <div className="w-full grid grid-cols-12 h-[50px] rounded-full p-1 mt-4">
+          <div className="w-full grid grid-cols-12 h-[50px] rounded-full p-2 mt-2">
             <div className="grid col-span-2  flex justify-center items-center">
               <span className="rounded-full h-[30px] w-[30px] flex justify-center items-center bg-[#0066DB] text-white">
                 {getInitials(signerData?.name) || "kt"}
               </span>
             </div>
-            <div className="grid col-span-8 flex justify-center items-center text-white ">
+            <div className="grid col-span-8 flex justify-center items-center text-white px-3">
               {signerData?.name || "kumar tatimatla"}
             </div>
             <div className="grid col-span-2 flex justify-center items-center">

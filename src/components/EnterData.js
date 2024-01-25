@@ -80,9 +80,9 @@ const EnterData = () => {
   }, []);
   return (
     <Layout>
-      <div className="rounded-md cw-m col-span-6 border border-pxty-light bg-pxty-dark flex justify-center items-center">
-        <div className="w-7/12">
-          <div className="text-pxty-hg text-4xl pb-1 mb-8 text-center">
+      <div className="rounded-md cw-m col-span-11 sm:col-span-9 lg:col-span-10 border border-pxty-light bg-pxty-dark flex justify-center items-center">
+        <div className="w-9/12 sm:w-7/12">
+          <div className="text-pxty-hg text-2xl md:text-3xl lg:text-4xl pb-1 mb-8 text-center">
             {t("Where knowledge begins")}
           </div>
           {!openModal && <TextInput />}

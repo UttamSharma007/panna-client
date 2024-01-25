@@ -10,7 +10,7 @@ const Discover = () => {
   }, []);
   return (
     <Layout>
-      <div className="rounded-md cw-m col-span-6 border border-pxty-light bg-pxty-dark">
+      <div className="rounded-md cw-m col-span-11 sm:col-span-9 lg:col-span-10 border border-pxty-light bg-pxty-dark">
         <div className="text-xl p-4">Discover page</div>
       </div>
     </Layout>

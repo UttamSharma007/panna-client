@@ -76,7 +76,7 @@ const TextInput = () => {
             placeholder={t("Ask anything...")}
             classNames={{
               inputWrapper: [
-                // "bg-pxty-dark-mid",
+                "bg-pxty-dark-mid",
                 "hover:bg-pxty-dark-mid",
                 "focus:bg-pxty-dark-mid",
                 "rounded-md",
@@ -102,7 +102,7 @@ const TextInput = () => {
           className={skeletonStyle(loading)}
           id="skeleton-loader"
         >
-          <div className="pb-2 pl-2">
+          <div className="pb-2 pl-2 flex items-center justify-center flex-col sm:flex-row">
             <Button
               className="bg-pxty-dark-mid text-pxty-light-text p-0 h-fit text-sm h-8 hover:text-pxty-hover-cyan"
               radius="full"
@@ -151,7 +151,7 @@ const TextInput = () => {
             </Button>
           </div>
         </Skeleton>
-        <div>
+        <div className="flex items-center justify-center flex-col sm:flex-row">
           {loading && (
             <Spinner
               classNames={{
@@ -179,11 +179,12 @@ const TextInput = () => {
             startContent={
               <svg
                 fill="#1fa363"
-                width={"50px"}
-                height={"32px"}
+                // width={"30px"}
+                // height={"30px"}
                 version="1.1"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 512 512"
+                className="w-[20px] h-[20px] sm:w-[30px] sm:h-[30px]"
               >
                 <g>
                   <g>
@@ -208,7 +209,7 @@ const TextInput = () => {
                   viewBox="0 0 24 24"
                   strokeWidth={1}
                   stroke={isDisabled ? "grey" : "#224348"}
-                  className="w-10 h-10"
+                  className="w-8 h-8 sm:w-10 sm:h-10"
                 >
                   <path
                     strokeLinecap="round"
