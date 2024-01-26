@@ -226,6 +226,10 @@ const Sidebar = () => {
               className="bg-pxty-dark-mid"
               isOpen={isOpen}
               onOpenChange={onOpenChange}
+              classNames={{
+                backdrop: ["z-[250]"],
+                wrapper: ["z-[250]"],
+              }}
             >
               <ModalContent>
                 {(onClose) => (

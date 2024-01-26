@@ -7,6 +7,7 @@ import rehypeRaw from "rehype-raw";
 import { useNavigate } from "react-router-dom";
 import { handleSearch } from "./EnterData";
 import { skeletonStyle } from "./TextInput";
+import Loader from "./Loader";
 
 const Results = () => {
   const navigate = useNavigate();
@@ -52,7 +53,7 @@ const Results = () => {
       setIsDisabled(true);
     }
   }, [enteredPrompt]);
-  console.log("---->", loading);
+
   useEffect(() => {
     if (loading) {
       const div = document.getElementById("skeleton-loader");
@@ -61,6 +62,7 @@ const Results = () => {
   }, [loading]);
   return (
     <Layout>
+      {loading && <Loader />}
       <div className="rounded-md cw-m col-span-11 sm:col-span-9 lg:col-span-10 border border-pxty-light bg-pxty-dark grid grid-cols-10">
         <div className="col-span-1"> </div>
         {/* ------- main content */}
