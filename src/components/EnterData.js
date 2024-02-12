@@ -38,7 +38,7 @@ export const handleSearch = async (ctx, navigate) => {
     setLoading(true);
     navigate("/results");
     const response = await axios.post(
-      "http://3.19.203.187:5001/handle_user_prompt",
+      "http://127.0.0.1:5001/handle_user_prompt",
       {
         prompt: enteredPrompt,
         rejectUnauthorized: false,
